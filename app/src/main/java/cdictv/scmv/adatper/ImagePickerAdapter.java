@@ -1,4 +1,4 @@
-package cdictv.scmv;
+package cdictv.scmv.adatper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,9 @@ import com.lzy.imagepicker.bean.ImageItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cdictv.scmv.R;
+import cdictv.scmv.activity.MainActivity;
 
 /**
  * ================================================

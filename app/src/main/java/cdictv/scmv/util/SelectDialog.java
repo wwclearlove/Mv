@@ -1,4 +1,4 @@
-package cdictv.scmv;
+package cdictv.scmv.util;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import cdictv.scmv.R;
 
 /**
  * 选择对话框

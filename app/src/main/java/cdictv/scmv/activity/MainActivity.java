@@ -1,12 +1,14 @@
-package cdictv.scmv;
+package cdictv.scmv.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -17,7 +19,15 @@ import com.lzy.imagepicker.view.CropImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ImagePickerAdapter.OnRecyclerViewItemClickListener{
+import cdictv.scmv.R;
+import cdictv.scmv.adatper.ImagePickerAdapter;
+import cdictv.scmv.network.HttpUtil;
+import cdictv.scmv.network.MyStringCallBack;
+import cdictv.scmv.util.GlideImageLoader;
+import cdictv.scmv.util.SelectDialog;
+import okhttp3.Call;
+
+public class MainActivity extends AppCompatActivity implements ImagePickerAdapter.OnRecyclerViewItemClickListener {
 
     public static final int IMAGE_ITEM_ADD = -1;
     public static final int REQUEST_CODE_SELECT = 100;
@@ -25,28 +35,29 @@ public class MainActivity extends AppCompatActivity implements ImagePickerAdapte
 
     private ImagePickerAdapter adapter;
     private ArrayList<ImageItem> selImageList; //当前选择的所有图片
-    private int maxImgCount = 8;               //允许选择图片最大数
+    private int maxImgCount = 15;               //允许选择图片最大数
 
-//    private HttpUtil httpUtil;
-
+    private HttpUtil httpUtil;
+    Button mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mButton=findViewById(R.id.btn);
+        httpUtil = new HttpUtil();
+        //最好放到 Application oncreate执行
+        initImagePicker();
+        initWidget();
+        initlintener();
+    }
 
-//        httpUtil = new HttpUtil();
-
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+    private void initlintener() {
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadImage(selImageList);
             }
         });
-
-        //最好放到 Application oncreate执行
-        initImagePicker();
-        initWidget();
-
     }
 
     private void initImagePicker() {
@@ -152,7 +163,8 @@ public class MainActivity extends AppCompatActivity implements ImagePickerAdapte
     private String url="http...";
 
     private void uploadImage(ArrayList<ImageItem> pathList) {
-        /*httpUtil.postFileRequest(url, null, pathList, new MyStringCallBack() {
+        Log.i("===", "uploadImage: "+pathList);
+        httpUtil.postFileRequest(url, null, pathList, new MyStringCallBack() {
 
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -164,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerAdapte
                 super.onResponse(response, id);
                 //返回图片的地址
             }
-        });*/
+        });
     }
 
 }

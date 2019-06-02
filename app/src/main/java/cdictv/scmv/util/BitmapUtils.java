@@ -1,4 +1,4 @@
-package cdictv.scmv;
+package cdictv.scmv.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

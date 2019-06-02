@@ -1,4 +1,4 @@
-package cdictv.scmv;
+package cdictv.scmv.util;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lzy.imagepicker.loader.ImageLoader;
 import java.io.File;
+
+import cdictv.scmv.R;
 
 /**
  * Created by yechao on 2017/4/28.
