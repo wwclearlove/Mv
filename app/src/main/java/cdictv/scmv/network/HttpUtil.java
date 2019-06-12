@@ -45,7 +45,6 @@ public class HttpUtil {
             String newPath = BitmapUtils.compressImageUpload(pathList.get(i).path);
             files.put(pathList.get(i).name+i,new File(newPath));
         }
-
         mPost.url(url)
                 .files("files",files)
                 .build()

@@ -17,15 +17,8 @@ import java.util.List;
 import cdictv.scmv.R;
 import cdictv.scmv.activity.MainActivity;
 
-/**
- * ================================================
- * 作    者：ikkong （ikkong@163.com），修改 jeasonlzy（廖子尧）
- * 版    本：1.0
- * 创建日期：2016/5/19
- * 描    述：
- * 修订历史：微信图片选择的Adapter, 感谢 ikkong 的提交
- * ================================================
- */
+
+
 public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.SelectedPicViewHolder> {
     private int maxImgCount;
     private Context mContext;
@@ -88,7 +81,7 @@ public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.
 
         public SelectedPicViewHolder(View itemView) {
             super(itemView);
-            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
+            iv_img =itemView.findViewById(R.id.iv_img);
         }
 
         public void bind(int position) {
